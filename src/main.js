@@ -4,6 +4,12 @@ import viteLogo from '/vite.svg'
 import { setupCounter, setupCounters } from './counter.js'
 import { setupInput } from './input.js'
 
+function sayHi(name, timestamp) {
+  const strToConsole = `Hi, ${name}. Date now is ${timestamp}`;
+  console.log(strToConsole);
+}
+sayHi('konstantin arbuzov', new Date(Date.now()));
+
 document.querySelector('#app').innerHTML = `
   <div>
   <button>aboba</button>
@@ -22,35 +28,12 @@ document.querySelector('#app').innerHTML = `
     <p class="read-the-docs">
       Click on the Vite logo to learn more
     </p>
-    <input id="input" type="text" />
+    <h3 id="todo-counter">0</h3>
+    <input id="input" type="text" value="init" />
     <button id="save">Save</button>
-    <p id="text" />
+    <ul id="list" />
   </div>
 `
 
-// setupIncrementalCounter(nt.querySelector('.read-the-docs'))
-// setupCounterForH1();
-
-
-
-// setupCounter({ element: document.querySelector('#decremental-counter'), initNum: 5, delta: -10})
-// setupCounter(document.querySelector('#incremental-counter'), 90, 10)
-// setupCounter(document.querySelector('.read-the-docs'), 0, 10);
-
-// const card = document.getElementsByClassName("button");
-// console.log(card)
-// setupCounters(card.querySelectorAll('button'))
 setupCounters({ elements: document.querySelectorAll('.card button'), initNum: 5, delta: 2 })
-setupInput(document.querySelector('#input'), document.querySelector('#text'))
-
-const obj = {
-  foo: 'bar',
-  bar: 'baz',
-  flag: true,
-  num: 1,
-};
-
-const { foo, bar } = obj;
-
-const newObj = { foo, bar, flag: false, num: -1 }
-
+setupInput(document.querySelector('#input'), document.querySelector('#save'), document.querySelector('#list'), document.querySelector('#todo-counter'))
